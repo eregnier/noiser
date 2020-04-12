@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>speaker 2000</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        textarea {
+            width: 98%;
+            margin-left: 1%;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('button').click(function () {
+                $.post('/speak', {text: $('textarea').val(), lang: 'fr'})
+                $('.alert').removeClass('hide')
+                setTimeout(function () {
+                    $('.alert').addClass('hide')
+                }, 3000)
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <br />
+    <textarea rows="5"></textarea>
+    <br />
+    <div class="alert alert-info hide" role="alert">
+        Envoyé
+    </div>
+    <center><button type="button" class="btn btn-primary">Envoyer</button></center>
+</body>
+
+</html>
